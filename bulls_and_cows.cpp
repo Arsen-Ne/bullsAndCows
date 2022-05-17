@@ -36,10 +36,14 @@ void bulls_and_cows::on_pbNewGame_clicked()
     }
 
     qsrand(QDateTime::currentDateTime().toTime_t());
-    for(int i = 0; i < 4; i++) {
-        number[i] = (qrand() % 10) + 48;
+    QChar tmp;
+    number.clear();
+    while(number.size() < 4){
+        tmp = (qrand() % 10) + 48;
+        if(!number.contains(tmp)){
+            number.append(tmp);
+        }
     }
-
     ui->label->setText("Игра началась");
 //    QString res = QString("Игра началась %1").arg(number);
 //    ui->label->setText(res);
